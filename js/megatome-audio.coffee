@@ -9,5 +9,3 @@ pause_button.onclick = ->
 	else
 		music.status = "pause"
 		music.pause()
-
-	false
