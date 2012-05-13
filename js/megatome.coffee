@@ -11,7 +11,7 @@ new_tweet = (tweet) ->
 
 	if !tweets[text]
 		tweets[text] = [tweet.from_user]
-	else
+	else if !$.inArray(tweet.from_user, tweets[text]) == -1
 		tweets[text].push tweet.from_user
 
 	from = tweets[text].join(', ')
