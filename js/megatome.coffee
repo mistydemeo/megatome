@@ -10,11 +10,16 @@ new_tweet = (tweet) ->
 	text = tweet.text.replace " #sworcery", ""
 
 	if !tweets[text]
-		tweets[text] = [tweet.from_user]
-	else if !$.inArray(tweet.from_user, tweets[text]) == -1
-		tweets[text].push tweet.from_user
+		tweets[text] = {}
+		tweets[text].users = [tweet.from_user]
+		tweets[text].ids = [tweet.id_str]
+	else
+		if $.inArray(tweet.from_user, tweets[text].users) == -1
+			tweets[text].users.push tweet.from_user
+		if $.inArray(tweet.from_user, tweets[text].ids) == -1
+			tweets[text].ids.push tweet.id_str
 
-	from = tweets[text].join(', ')
+	from = tweets[text].users.join(', ')
 
 	tweet_header = "<div class='span2'>#{from}</div>"
 	tweet_element = "<div class='span4'>#{text}</div>"
