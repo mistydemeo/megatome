@@ -6,23 +6,20 @@ $.ajaxSetup({"error": (XMLHttpRequest, textStatus, errorThrown) ->
 
 tweets = {}
 
-redraw = (id, new_name) ->
-	id = document.getElementById("id#{id+1}")
-	id.innerHTML = id.innerHTML + "<br>#{new_name}"
-
-update_column = (id, tweet) ->
+new_tweet = (tweet) ->
 	text = tweet.text.replace " #sworcery", ""
-	if tweets[text]
-		tweets[text].push tweet.from_user unless $.inArray tweet.from_user, tweets[text]
-		redraw id, tweet.from_user
-		console.log(tweets[text])
-	else
-		document.getElementById("id#{id+1}").innerHTML = tweet.from_user
-		document.getElementById("tweet#{id+1}").innerHTML = text
-		tweets[text] = [tweet.from_user]
+
+	tweet_header = "<div class='span2'>#{tweet.from_user}</div>"
+	tweet_element = "<div class='span4'>#{text}</div>"
+	tweet_header + tweet_element
+
+add_row = (data) ->
+	row = "<div class='row-fluid'>#{new_tweet data[0]}#{new_tweet data[1]}</div>"
+	$('#tweetbox').prepend row
 
 update_columns = (data) ->
-	update_column i, tweet for tweet, i in data.results
+	for i in [0..data.results.length/2]
+		add_row data.results[i..i+1]
 
 search = (hashtag, count) ->
 	host = "http://search.twitter.com"
