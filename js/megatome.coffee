@@ -46,7 +46,8 @@ update_columns = (data) ->
 	return if new_tweets.length == 0
 
 	for i in [0..Math.floor((new_tweets.length - 1) / 2)]
-		add_row new_tweets[i..i+1]
+		index = i*2
+		add_row new_tweets[index..index+1]
 
 search = (hashtag, count) ->
 	host = "http://search.twitter.com"
