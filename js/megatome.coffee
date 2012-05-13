@@ -9,8 +9,16 @@ tweets = {}
 new_tweet = (tweet) ->
 	text = tweet.text.replace " #sworcery", ""
 
-	tweet_header = "<div class='span2'>#{tweet.from_user}</div>"
+	if !tweets[text]
+		tweets[text] = [tweet.from_user]
+	else
+		tweets[text].push tweet.from_user
+
+	from = tweets[text].join(', ')
+
+	tweet_header = "<div class='span2'>#{from}</div>"
 	tweet_element = "<div class='span4'>#{text}</div>"
+
 	tweet_header + tweet_element
 
 add_row = (data) ->
