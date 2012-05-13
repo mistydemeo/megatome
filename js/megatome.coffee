@@ -6,8 +6,11 @@ $.ajaxSetup({"error": (XMLHttpRequest, textStatus, errorThrown) ->
 
 tweets = {}
 
+String::desworcerize = ->
+	this.replace /\ #sworcery$/, ""
+
 new_tweet = (tweet) ->
-	text = tweet.text.replace " #sworcery", ""
+	text = tweet.text.desworcerize()
 
 	if !tweets[text]
 		tweets[text] = {}
@@ -35,7 +38,7 @@ update_columns = (data) ->
 
 	for i in [0..data.results.length-1]
 		tweet = data.results[i]
-		text = tweet.text.replace " #sworcery", ""
+		text = tweet.text.desworcerize()
 		if !tweets[text] || $.inArray(tweet.id_str, tweets[text].ids) == -1
 			new_tweets.push tweet
 
