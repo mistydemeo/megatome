@@ -4,6 +4,7 @@ $.ajaxSetup({"error": (XMLHttpRequest, textStatus, errorThrown) ->
 	alert(XMLHttpRequest.responseText)
 	})
 
+# To keep track of tweets that have already been displayed
 tweets = {}
 
 String::desworcerize = ->
