@@ -31,8 +31,18 @@ add_row = (data) ->
 	$('#tweetbox').prepend row
 
 update_columns = (data) ->
-	for i in [0..data.results.length/2]
-		add_row data.results[i..i+1]
+	new_tweets = []
+
+	for i in [0..data.results.length-1]
+		tweet = data.results[i]
+		text = tweet.text.replace " #sworcery", ""
+		if !tweets[text] || $.inArray(tweet.id_str, tweets[text].ids) == -1
+			new_tweets.push tweet
+
+	return if new_tweets.length == 0
+
+	for i in [0..Math.floor((new_tweets.length - 1) / 2)]
+		add_row new_tweets[i..i+1]
 
 search = (hashtag, count) ->
 	host = "http://search.twitter.com"
