@@ -34,4 +34,9 @@ search = (hashtag, count) ->
 	url = "#{host}/search.json?q=%23#{hashtag}&include_entities=false&result_type=recent&rpp=#{count}&callback=?"
 	$.getJSON(url, update_columns)
 
-search("sworcery", 8)
+update = ->
+	search("sworcery", 8)
+
+update()
+
+setInterval(update, 60000)
