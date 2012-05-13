@@ -23,10 +23,25 @@
 	<div class="container" id="tweetbox">
 	</div>
 
+	<div class="modal hide fade" id="aboot-box">
+		<div class="modal-header">
+			<button class="close" data-dismiss="modal">&times;</button>
+			<h3>Aboot</h3>
+		</div>
+		<div class="modal-body">
+			<p>This site is a teeny entry to the #sworceryavjam by <a href="https://github.com/mistydemeo">@mistydemeo</a>, based on the most excellent <a href="http://www.swordandsworcery.com/">Sword &amp; Sworcery</a> by <a href="http://www.capybaragames.com/">Capy Games</a>, <a href="http://superbrothers.ca/">Superbrothers</a>, and <a href="http://www.jimguthrie.org/">Jim Guthrie</a>.</p>
+			<p>It's not very good but at least it's something, eh?</p>
+			<p>Now we are cosmic friends forever, ok?</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+		</div>
+	</div>
+
 	<div class="navbar navbar-fixed-bottom">
 		<div class="navbar-inner">
 			<div class="container">
-				<a href="#" id="aboot" class="btn">Aboot</a>
+				<a href="#aboot-box" id="aboot" data-toggle="modal" class="btn">Aboot</a>
 				<a href="#" id="pause_button" data-toggle="button" class="btn">Stop the music!</a>
 			</div>
 		</div>
@@ -36,4 +51,5 @@
 <script src="js/megatome.js"></script>
 <script src="js/megatome-audio.js"></script>
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
 </html>
