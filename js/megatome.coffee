@@ -27,7 +27,7 @@ new_tweet = (tweet) ->
 	else
 		if tweets[text].users.includes tweet.from_user
 			tweets[text].users.push tweet.from_user
-		if tweets[text].ids.includes tweet.from_user
+		if tweets[text].ids.includes tweet.id_str
 			tweets[text].ids.push tweet.id_str
 
 	from = tweets[text].users.join(', ')
