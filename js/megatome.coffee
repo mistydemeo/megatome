@@ -39,7 +39,7 @@ new_tweet = (tweet) ->
 
 add_row = (data) ->
 	row = "<div class='row-fluid'>#{new_tweet data[0]}#{new_tweet data[1]}</div>"
-	$('#tweetbox').prepend row
+	$(row).hide().prependTo('#tweetbox').fadeIn('slow')
 
 update_columns = (data) ->
 	return if data.results.length == 0
