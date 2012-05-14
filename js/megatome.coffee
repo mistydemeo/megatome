@@ -52,7 +52,7 @@ update_columns = (data) ->
 		if !tweets[text] || !tweets[text].ids.includes(tweet.id_str)
 			new_tweets.push tweet
 
-	return if new_tweets.length == 0
+	return if new_tweets.length < 2
 
 	for i in [0..Math.floor((new_tweets.length - 1) / 2)]
 		index = i*2
