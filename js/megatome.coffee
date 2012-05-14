@@ -36,6 +36,7 @@ add_row = (data) ->
 	$('#tweetbox').prepend row
 
 update_columns = (data) ->
+	return if data.results.length == 0
 	latest_id = data.results[0].id_str
 	new_tweets = []
 
