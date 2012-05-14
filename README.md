@@ -3,8 +3,8 @@ MEGATOME is a noninteractive javascript-style twitter-simulator for your interne
 FAQ
 ===
 
-Q So what does this really do?
-A MEGATOME fetches the latest tweets in the key of #sworcery and displays them, then regularly polls for new tweets you haven't seen yet and pushes them to the top. It also keeps track of which users have tweeted particular bits of dialogue, so you can see which segments of dialogue are the most popular.
+### So what does this really do?
+MEGATOME fetches the latest tweets in the key of #sworcery and displays them, then regularly polls for new tweets you haven't seen yet and pushes them to the top. It also keeps track of which users have tweeted particular bits of dialogue, so you can see which segments of dialogue are the most popular.
 
-Q This isn't really that good.
-A It isn't, is it?
+### This isn't really that good.
+It isn't, is it?
