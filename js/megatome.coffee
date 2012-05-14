@@ -49,7 +49,7 @@ update_columns = (data) ->
 	for i in [0..data.results.length-1]
 		tweet = data.results[i]
 		text = tweet.text.desworcerize()
-		if !tweets[text] || tweets[text].ids.includes tweet.id_str
+		if !tweets[text] || !tweets[text].ids.includes(tweet.id_str)
 			new_tweets.push tweet
 
 	return if new_tweets.length == 0
