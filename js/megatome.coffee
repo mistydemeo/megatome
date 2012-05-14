@@ -69,7 +69,7 @@ search = (hashtag, count) ->
 	$.getJSON(url, update_columns)
 
 update = ->
-	search("sworcery", 8)
+	search("sworcery", 10)
 
 update()
 
