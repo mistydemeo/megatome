@@ -2,14 +2,6 @@
 (function() {
   var add_row, latest_id, new_tweet, search, tweets, update, update_columns;
 
-  $.ajaxSetup({
-    "error": function(XMLHttpRequest, textStatus, errorThrown) {
-      alert(textStatus);
-      alert(errorThrown);
-      return alert(XMLHttpRequest.responseText);
-    }
-  });
-
   tweets = {};
 
   latest_id = "0";
@@ -50,7 +42,7 @@
   add_row = function(data) {
     var row;
     row = "<div class='row-fluid'>" + (new_tweet(data[0])) + (new_tweet(data[1])) + "</div>";
-    return $('#tweetbox').prepend(row);
+    return $(row).hide().prependTo('#tweetbox').fadeIn('slow').slideDown();
   };
 
   update_columns = function(data) {
@@ -70,6 +62,7 @@
     if (new_tweets.length < 2) {
       return;
     }
+    new_tweets = new_tweets.reverse();
     _results = [];
     for (i = _j = 0, _ref1 = Math.floor((new_tweets.length - 1) / 2); 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
       index = i * 2;
@@ -86,7 +79,7 @@
   };
 
   update = function() {
-    return search("sworcery", 8);
+    return search("sworcery", 10);
   };
 
   update();
