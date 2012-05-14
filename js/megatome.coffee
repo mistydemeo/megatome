@@ -1,9 +1,3 @@
-$.ajaxSetup({"error": (XMLHttpRequest, textStatus, errorThrown) ->
-	alert(textStatus)
-	alert(errorThrown)
-	alert(XMLHttpRequest.responseText)
-	})
-
 # To keep track of tweets that have already been displayed
 tweets = {}
 latest_id = "0"
