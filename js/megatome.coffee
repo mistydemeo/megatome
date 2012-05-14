@@ -54,6 +54,11 @@ update_columns = (data) ->
 
 	return if new_tweets.length < 2
 
+	# Twitter search results are reverse chronological, so
+	# make sure we write them to screen so they will display
+	# in the same order
+	new_tweets = new_tweets.reverse()
+
 	for i in [0..Math.floor((new_tweets.length - 1) / 2)]
 		index = i*2
 		add_row new_tweets[index..index+1]
