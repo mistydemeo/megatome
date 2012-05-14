@@ -8,6 +8,12 @@ $.ajaxSetup({"error": (XMLHttpRequest, textStatus, errorThrown) ->
 tweets = {}
 latest_id = "0"
 
+Array::includes = (v) ->
+	if $.inArray(v, this) > -1
+		true
+	else
+		false
+
 String::desworcerize = ->
 	this.replace /\ #sworcery$/, ""
 
@@ -19,9 +25,9 @@ new_tweet = (tweet) ->
 		tweets[text].users = [tweet.from_user]
 		tweets[text].ids = [tweet.id_str]
 	else
-		if $.inArray(tweet.from_user, tweets[text].users) == -1
+		if tweets[text].users.includes tweet.from_user
 			tweets[text].users.push tweet.from_user
-		if $.inArray(tweet.from_user, tweets[text].ids) == -1
+		if tweets[text].ids.includes tweet.from_user
 			tweets[text].ids.push tweet.id_str
 
 	from = tweets[text].users.join(', ')
@@ -43,7 +49,7 @@ update_columns = (data) ->
 	for i in [0..data.results.length-1]
 		tweet = data.results[i]
 		text = tweet.text.desworcerize()
-		if !tweets[text] || $.inArray(tweet.id_str, tweets[text].ids) == -1
+		if !tweets[text] || tweets[text].ids.includes tweet.id_str
 			new_tweets.push tweet
 
 	return if new_tweets.length == 0
