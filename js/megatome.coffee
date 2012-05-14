@@ -6,6 +6,7 @@ $.ajaxSetup({"error": (XMLHttpRequest, textStatus, errorThrown) ->
 
 # To keep track of tweets that have already been displayed
 tweets = {}
+latest_id = "0"
 
 String::desworcerize = ->
 	this.replace /\ #sworcery$/, ""
@@ -35,6 +36,7 @@ add_row = (data) ->
 	$('#tweetbox').prepend row
 
 update_columns = (data) ->
+	latest_id = data.results[0].id_str
 	new_tweets = []
 
 	for i in [0..data.results.length-1]
@@ -51,7 +53,7 @@ update_columns = (data) ->
 
 search = (hashtag, count) ->
 	host = "http://search.twitter.com"
-	url = "#{host}/search.json?q=%23#{hashtag}&include_entities=false&result_type=recent&rpp=#{count}&callback=?"
+	url = "#{host}/search.json?q=%23#{hashtag}&include_entities=false&result_type=recent&rpp=#{count}&since_id=#{latest_id}&callback=?"
 	$.getJSON(url, update_columns)
 
 update = ->
